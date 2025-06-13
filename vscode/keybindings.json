@@ -1,0 +1,59 @@
+[
+  {
+    "key": "cmd+m",
+    "command": "workbench.action.toggleMaximizedPanel"
+  },
+  {
+    "key": "cmd+shift+i",
+    "command": "workbench.panel.chat"
+  },
+  {
+    "key": "shift+r",
+    "command": "copyRelativeFilePath",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "shift+p",
+    "command": "copyFilePath",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "t",
+    "command": "openInIntegratedTerminal",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "cmd+e",
+    "command": "workbench.files.action.focusFilesExplorer"
+  },
+  {
+    "key": "cmd+d",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "c",
+    "command": "workbench.files.action.collapseExplorerFolders",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "n",
+    "command": "explorer.newFile",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "shift+n",
+    "command": "explorer.newFolder",
+    "when": "explorerViewletFocus"
+  },
+  {
+    "key": "r",
+    "command": "renameFile",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "d",
+    "command": "deleteFile",
+    "when": "filesExplorerFocus && !inputFocus"
+  }
+]

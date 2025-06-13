@@ -1,0 +1,31 @@
+{
+  "toggleUI": "Option+Space",
+  "theme": "light",
+  "onPathSelected": "code -n \"$PATH\"",
+  "commands": [
+    {
+      "hotKey": "Option+Shift+C",
+      "command": "code -n",
+      "displayName": "Open new VSCode window"
+    },
+    {
+      "hotKey": "Option+Shift+T",
+      "command": "open -na Terminal",
+      "displayName": "Terminal"
+    },
+    {
+      "hotKey": "Option+Shift+G",
+      "command": "osascript -e 'tell application \"Google Chrome\" to make new window'",
+      "displayName": "New Chrome Window"
+    },
+    {
+      "hotKey": "Option+Shift+I",
+      "command": "osascript -e 'tell application \"Google Chrome\" to make new window with properties {mode:\"incognito\"}'",
+      "displayName": "New Incognito Window"
+    },
+    {
+      "command": "osascript -e 'tell application \"Finder\" to empty the trash'",
+      "displayName": "Empty Trash"
+    }
+  ]
+}

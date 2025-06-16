@@ -53,6 +53,10 @@
       "commands": ["git.viewChanges"]
     },
     {
+      "before": ["g", "s"],
+      "commands": ["git.openChange"]
+    },
+    {
       "before": ["leader", "-"],
       "commands": ["workbench.action.navigateBack"]
     },

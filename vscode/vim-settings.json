@@ -50,7 +50,7 @@
     },
     {
       "before": ["g", "d"],
-      "commands": ["editor.action.revealDefinition"]
+      "commands": ["git.viewChanges"]
     },
     {
       "before": ["leader", "-"],

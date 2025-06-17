@@ -57,6 +57,10 @@
       "commands": ["git.openChange"]
     },
     {
+      "before": ["r", "d"],
+      "commands": ["editor.action.revealDefinition"]
+    },
+    {
       "before": ["leader", "-"],
       "commands": ["workbench.action.navigateBack"]
     },

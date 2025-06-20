@@ -35,6 +35,8 @@ compare() {
     return 1
   fi
 
+  local base_domain repo_path
+
   if [[ "$remote" =~ ^git@([^:]+):(.+)\.git$ ]]; then
     base_domain="${match[1]}"
     repo_path="${match[2]}"

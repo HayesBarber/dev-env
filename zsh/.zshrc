@@ -27,6 +27,37 @@ acm() {
     git push
 }
 
+pr() {
+  local submit=false
+  local title=$(current_branch)
+  local open_cmd="gh pr create --web"
+  
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      -s)
+        submit=true
+        shift
+        ;;
+      -t|--title)
+        shift
+        title="$1"
+        shift
+        ;;
+      *)
+        echo "Usage: pr [-s] [-t|--title \"PR title\"]"
+        return 1
+        ;;
+    esac
+  done
+
+  if $submit; then
+    pr_url=$(gh pr create --title "$title" --body "")
+    echo "PR: $pr_url" | pbcopy
+    echo "PR submitted and copied to clipboard: $pr_url"
+  else
+    $open_cmd --title "$title" --body ""
+}
+
 compare() {
   local remote=$(git remote get-url origin 2>/dev/null)
 

@@ -70,7 +70,6 @@ compare() {
   open "$url"
 }
 
-
 copy() { tee /dev/tty | pbcopy; }
 copy_branch() { current_branch | copy; }
 cpath() { pwd | copy; }

@@ -16,6 +16,10 @@ set_prompt() {
 
 precmd_functions+=(set_prompt)
 
+copy() { tee /dev/tty | pbcopy; }
+copy_branch() { current_branch | copy; }
+cpath() { pwd | copy; }
+
 # auto commit
 acm() {
     git add .
@@ -30,7 +34,6 @@ acm() {
 pr() {
   local submit=false
   local title=$(current_branch)
-  local open_cmd="gh pr create --web"
   
   while [[ $# -gt 0 ]]; do
     case "$1" in
@@ -52,10 +55,10 @@ pr() {
 
   if $submit; then
     pr_url=$(gh pr create --title "$title" --body "")
-    echo "PR: $pr_url" | pbcopy
-    echo "PR submitted and copied to clipboard: $pr_url"
+    echo "$pr_url" | copy
+    open "$pr_url"
   else
-    $open_cmd --title "$title" --body ""
+    gh pr create --title "$title" --body "" --web
   fi
 }
 
@@ -101,11 +104,6 @@ compare() {
   echo "Opening diff: $url"
   open "$url"
 }
-
-copy() { tee /dev/tty | pbcopy; }
-copy_branch() { current_branch | copy; }
-cpath() { pwd | copy; }
-copy_ip() { ip | copy; }
 
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

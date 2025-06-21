@@ -56,6 +56,7 @@ pr() {
     echo "PR submitted and copied to clipboard: $pr_url"
   else
     $open_cmd --title "$title" --body ""
+  fi
 }
 
 compare() {

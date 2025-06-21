@@ -27,6 +27,8 @@ acm() {
     git push
 }
 
+pr() {}
+
 compare() {
   local remote=$(git remote get-url origin 2>/dev/null)
 

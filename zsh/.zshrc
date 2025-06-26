@@ -106,5 +106,5 @@ compare() {
 }
 
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-bindkey '\e' autosuggest-accept
+bindkey '\e ' autosuggest-accept
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

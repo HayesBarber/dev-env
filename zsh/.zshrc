@@ -34,7 +34,8 @@ acm() {
 pr() {
   local submit=false
   local title=$(current_branch)
-  
+  local body=""
+
   while [[ $# -gt 0 ]]; do
     case "$1" in
       -s)
@@ -46,19 +47,24 @@ pr() {
         title="$1"
         shift
         ;;
+      -b|--body)
+        shift
+        body="$1"
+        shift
+        ;;
       *)
-        echo "Usage: pr [-s] [-t|--title \"PR title\"]"
+        echo "Usage: pr [-s] [-t|--title \"PR title\"] [-b|--body \"PR body\"]"
         return 1
         ;;
     esac
   done
 
   if $submit; then
-    pr_url=$(gh pr create --title "$title" --body "")
+    pr_url=$(gh pr create --title "$title" --body "$body")
     echo "$pr_url" | copy
     open "$pr_url"
   else
-    gh pr create --title "$title" --body "" --web
+    gh pr create --title "$title" --body "$body" --web
   fi
 }
 

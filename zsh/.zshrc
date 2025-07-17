@@ -111,6 +111,28 @@ compare() {
   open "$url"
 }
 
+revert_to_commit() {
+  if [[ -z "$1" ]]; then
+    echo "Usage: revert_to_commit <commit-hash>"
+    return 1
+  fi
+
+  local commit="$1"
+  local short_sha="${commit:0:7}"
+  local branch="revert-to-${short_sha}"
+
+  echo "Creating and switching to branch: $branch"
+  git checkout -b "$branch" || return 1
+
+  echo "Removing current working directory files..."
+  git rm -rf . || return 1
+
+  echo "Restoring files from commit $commit"
+  git checkout "$commit" -- . || return 1
+
+  echo "Done."
+}
+
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '\e ' autosuggest-accept
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

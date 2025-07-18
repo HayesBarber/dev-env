@@ -130,6 +130,8 @@ revert_to_commit() {
   echo "Restoring files from commit $commit"
   git checkout "$commit" -- . || return 1
 
+  git reset || return 1
+
   echo "Done."
 }
 

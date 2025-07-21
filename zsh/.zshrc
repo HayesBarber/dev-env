@@ -5,6 +5,7 @@ alias gr="git restore ."
 alias gs="git status"
 alias gd="git diff"
 alias current_branch="git rev-parse --abbrev-ref HEAD"
+alias rtc="revert_to_commit"
 
 format_current_branch() {
     current_branch 2> /dev/null | sed "s/\(.*\)/[\1] /"
@@ -66,6 +67,32 @@ pr() {
   else
     gh pr create --title "$title" --body "$body" --web
   fi
+}
+
+github() {
+  local remote=$(git remote get-url origin 2>/dev/null)
+
+  if [[ -z $remote ]]; then
+    echo "Not a git repository or no origin remote found"
+    return 1
+  fi
+
+  local base_domain repo_path
+
+  if [[ "$remote" =~ ^git@([^:]+):(.+)\.git$ ]]; then
+    base_domain="${match[1]}"
+    repo_path="${match[2]}"
+  elif [[ "$remote" =~ ^https://([^/]+)/(.+)\.git$ ]]; then
+    base_domain="${match[1]}"
+    repo_path="${match[2]}"
+  else
+    echo "Unsupported remote format: $remote"
+    return 1
+  fi
+
+  local url="https://${base_domain}/${repo_path}"
+  echo "Opening repo: $url"
+  open "$url"
 }
 
 compare() {

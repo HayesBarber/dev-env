@@ -1,4 +1,3 @@
-
 alias gcm="git checkout main || git checkout master"
 alias gl="git pull"
 alias gr="git restore ."
@@ -6,6 +5,8 @@ alias gs="git status"
 alias gd="git diff"
 alias current_branch="git rev-parse --abbrev-ref HEAD"
 alias rtc="revert_to_commit"
+alias tree="tree -C -F --dirsfirst"
+alias ls="tree -L 1"
 
 format_current_branch() {
     current_branch 2> /dev/null | sed "s/\(.*\)/[\1] /"

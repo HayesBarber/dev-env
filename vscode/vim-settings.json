@@ -67,6 +67,14 @@
     {
       "before": ["leader", "="],
       "commands": ["workbench.action.navigateForward"]
+    },
+    {
+      "before": ["m"],
+      "commands": ["workbench.action.decreaseViewSize"]
+    },
+    {
+      "before": ["n"],
+      "commands": ["workbench.action.increaseViewSize"]
     }
   ],
   "vim.visualModeKeyBindings": [
